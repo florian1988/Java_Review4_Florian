@@ -69,10 +69,9 @@ public class Product {
                 System.out.println("The amount of Articles in Shop two is = " + shop2.size());
 
             } else{
-                System.out.print("no Shop found");
+                System.out.println("");
+                System.out.println("no Shop found \n");
             }
-
-
 
 
     }
