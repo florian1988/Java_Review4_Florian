@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class Product {
 
     int productId;
-    int productIdCounter = 1;
+    private static int productIdCounter = 1;
     String productName;
     String productDescription;
     double productPrice;
@@ -47,22 +47,33 @@ public class Product {
 
     }
 
-        ArrayList< Integer > shops = new ArrayList< Integer>();
+        ArrayList< Integer > shop1 = new ArrayList< Integer>();
+        ArrayList< Integer > shop2 = new ArrayList< Integer>();
 
 
 
-    public void addItem(int shopId, int productId){
-
-
-
-            shops.add(shop[shopId].getShopId());
-
+    public void addItem(int shopId, int productId, String productName,  int stock){
             this.productId = productId;
+            this.productName = productName;
+            this.stock = stock;
+
+            stock(stock);
+
+            if(shopId == 1){
+                shop1.add(productId);
+                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName() + "  the sock is " + this.stock);
+                System.out.println( "The amount of Articles in Shop one is = " + shop1.size());
+            }else if(shopId == 2){
+                shop2.add(productId);
+                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName());
+                System.out.println("The amount of Articles in Shop two is = " + shop2.size());
+
+            } else{
+                System.out.print("no Shop found");
+            }
 
 
 
-        System.out.println(shop[shopId].getName() + " " + productId + "_ " + productName);
-        System.out.println(shops.size());
 
     }
 

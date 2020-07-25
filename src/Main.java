@@ -21,10 +21,13 @@ public class Main {
 
         product1.stock(10); //custom error massage
 
-        product1.show();
+        product3.show();
 
 
-        shops.addItem(1, product2.productId);
+        shops.addItem(shop1.getShopId(), product2.getProductId(), product2.productName, 10);
+        shops.addItem(shop2.getShopId(), product4.getProductId(), product4.productName, 5);
+        shops.addItem(shop1.getShopId(), product2.getProductId(), product2.productName,5);
+
 
 
 
