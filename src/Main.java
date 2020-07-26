@@ -65,7 +65,7 @@ public class Main {
         User user2 = new User("Friz", "Finster", "finster@.at", "finsterStr. 20", 5478 , 13452354);
         User user3 = new User("Berta", "Birnbaum", "birnbaum@.at", "birnbaumStr. 20", 4125 , 6786789 );
         User user4 = new User("Beate", "Bauer", "bauer@.at", "bauerStr. 20", 7458 , 12341234 );
-
+        User shop = new User(shop1, shop2);
 
 
         HashMap <Integer, String> users = new HashMap <Integer, String>();
@@ -81,7 +81,14 @@ public class Main {
          */
 
 
+        user1.history(product1.getProductId(), product1.getProductName(), product1.getProductPrice(),2, shop1.getShopId() );
+        user2.history(product1.getProductId(), product1.getProductName(), product1.getProductPrice(),1, shop2.getShopId() );
 
+
+        user1.printHistory();
+        user2.printHistory();
+
+        shop1.replaceAmountFromStock(product3.getProductId(), 2);
 
     }
 }

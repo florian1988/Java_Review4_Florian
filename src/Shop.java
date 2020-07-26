@@ -27,10 +27,7 @@ public class Shop {
             System.out.println("Stock cant be greater then 15");
         }
 
-        //products.add(new String[5]);
         products.add(new String[]{String.valueOf(productId), productName, String.valueOf(stock)});
-
-
 
        // System.out.println(products.size());
         //System.out.println(products.get(0)[2]);
@@ -48,6 +45,16 @@ public class Shop {
              */
             System.out.println("");
         }
+    }
+
+    public void replaceAmountFromStock(int productId, int amount){
+
+        int index = products.indexOf(3);
+
+        System.out.println(index);
+
+        products.set(2, new String[]{String.valueOf(amount)});
+
     }
 
 
