@@ -36,7 +36,7 @@ public class User{
 
     static int i =0;
 
-    public void history(int productId, String productName, double price, int amount,  int shopId ){
+    public void history(int productId, String productName, double price,   int shopId, int amount){
 
             i++;
 
@@ -52,14 +52,14 @@ public class User{
     public void printHistory(){
         for( int i = 0; i < purchaseList.size(); i++){
 
-            System.out.print( "PurchaseNumber: " +purchaseList.get(i)[0] + " Product Id: " + purchaseList.get(i)[1] + " Product Name: " + purchaseList.get(i)[2] + " Price: " + purchaseList.get(i)[3] +
-                    " Amount: " + purchaseList.get(i)[4] + "User ID: " + userId + " User Name: " + firstName + " Shop  Id: "  + purchaseList.get(i)[5] );
+            System.out.print( "PurchaseNumber: " +purchaseList.get(i)[0] + "  |Product Id: " + purchaseList.get(i)[1] + "  |Product Name: " + purchaseList.get(i)[2] + "  |Price: " + purchaseList.get(i)[3] +
+                    "  |Amount: " + purchaseList.get(i)[4] + " |User ID: " + userId + " |User Name: " + firstName + "   |Shop Id: "  + purchaseList.get(i)[5] );
             /*for(int x = 0; x < 3; x++){
                 System.out.print(products.get(i)[x]);
             }
 
              */
-            System.out.println("");
+            System.out.println(" ");
         }
 
 

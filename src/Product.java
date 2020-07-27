@@ -13,7 +13,9 @@ public class Product {
          Shirts, Jackets, Accessoires, Trousers, Pullovers
     }
 
-    int stock;
+    int stock1;
+    int stock2;
+
     Shop[] shop = new Shop[3];
 
 
@@ -33,16 +35,31 @@ public class Product {
     }
 
     public void show(){
-         System.out.println( productId + " " + productName + " " + productDescription + " " + productPrice + " " + category + " " + stock  );
+         System.out.println( productId + " " + productName + " " + productDescription + " " + productPrice + " " + category + " " + stock1  );
     }
 
 
-    public void stock( int stock){
+    public void stockShop1( int stock){
+        int d = stock1 + stock;
 
         if( stock > 15 ){
             System.out.println( "stock can't get over 15!");
         } else{
-            this.stock = stock;
+            this.stock1 = d;
+            System.out.println("New Stock " + d);
+        }
+
+    }
+
+
+    public void stockShop2( int stock){
+          int d = stock2 + stock;
+
+        if( d > 15 ){
+            System.out.println( "stock can't get over 15!");
+        } else{
+            this.stock2 = d;
+            System.out.println("New Stock " + d);
         }
 
     }
@@ -55,13 +72,13 @@ public class Product {
     public void addItem(int shopId, int productId, String productName,  int stock){
             this.productId = productId;
             this.productName = productName;
-            this.stock = stock;
+            this.stock1 = stock;
 
-            stock(stock);
+            //stock(stock);
 
             if(shopId == 1){
                 shop1.add(productId);
-                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName() + "  the sock is " + this.stock);
+                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName() + "  the sock is " + this.stock1);
                 System.out.println( "The amount of Articles in Shop one is = " + shop1.size());
             }else if(shopId == 2){
                 shop2.add(productId);
@@ -106,8 +123,11 @@ public class Product {
         return category;
     }
 
-    public int getStock() {
-        return stock;
+    public int getStock1() {
+        return stock1;
+    }
+    public int getStock2() {
+        return stock2;
     }
 
     public Shop[] getShop() {
@@ -138,8 +158,12 @@ public class Product {
         this.category = category;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setStock1(int stock) {
+        this.stock1 = stock;
+    }
+
+    public void setStock2(int stock) {
+        this.stock2 = stock;
     }
 
     public void setShop(Shop[] shop) {

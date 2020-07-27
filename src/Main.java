@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 
 public class Main {
 
@@ -18,6 +19,19 @@ public class Main {
         Product product3 = new Product("Jeans Developer", "pants", 59.99, Product.Category.Trousers);
         Product product4 = new Product("Jacket Developer", "funny back", 29.99, Product.Category.Jackets);
         Product product5 = new Product("Pullover Developer", "fluffy", 19.99, Product.Category.Pullovers);
+
+
+        product1.stockShop1(8);
+        product2.stockShop1(8);
+        product3.stockShop1(8);
+        product4.stockShop1(8);
+        product5.stockShop1(8);
+
+        product1.stockShop2(9);
+        product2.stockShop2(9);
+        product3.stockShop2(9);
+        product4.stockShop2(9);
+        product5.stockShop2(9);
 
         Product shops = new Product(shop1, shop2);
 
@@ -43,22 +57,22 @@ public class Main {
         //shops.addItem(shop1.getShopId(), product2.getProductId(), product2.productName,5);
 
 
-        shop1.addProducts(product1.getProductId(), product1.getProductName(), 5);
-        shop1.addProducts(product2.getProductId(), product2.getProductName(), 7);
-        shop1.addProducts(product3.getProductId(), product3.getProductName(), 9);
-        shop1.addProducts(product4.getProductId(), product4.getProductName(), 3);
-        shop1.addProducts(product5.getProductId(), product5.getProductName(), 6);
+        shop1.addProducts(product1.getProductId(), product1.getProductName(), product1.getStock1());
+        shop1.addProducts(product2.getProductId(), product2.getProductName(), product2.getStock1());
+        shop1.addProducts(product3.getProductId(), product3.getProductName(), product3.getStock1());
+        shop1.addProducts(product4.getProductId(), product4.getProductName(), product4.getStock1());
+        shop1.addProducts(product5.getProductId(), product5.getProductName(), product5.getStock1());
 
-        shop2.addProducts(product1.getProductId(), product1.getProductName(), 5);
-        shop2.addProducts(product2.getProductId(), product2.getProductName(), 7);
-        shop2.addProducts(product3.getProductId(), product3.getProductName(), 9);
-        shop2.addProducts(product4.getProductId(), product4.getProductName(), 3);
-        shop2.addProducts(product5.getProductId(), product5.getProductName(), 6);
+        shop2.addProducts(product1.getProductId(), product1.getProductName(), product1.getStock2());
+        shop2.addProducts(product2.getProductId(), product2.getProductName(), product1.getStock2());
+        shop2.addProducts(product3.getProductId(), product3.getProductName(), product1.getStock2());
+        shop2.addProducts(product4.getProductId(), product4.getProductName(), product1.getStock2());
+        shop2.addProducts(product5.getProductId(), product5.getProductName(), product1.getStock2());
 
 
 
-        //shop1.printProduct();
-        //shop2.printProduct();
+        shop1.printProduct();
+        shop2.printProduct();
 
 
         User user1 = new User("Franz", "Förster", "förster@.at", "försterStr. 20", 3445 , 65432187 );
@@ -81,14 +95,56 @@ public class Main {
          */
 
 
-        user1.history(product1.getProductId(), product1.getProductName(), product1.getProductPrice(),2, shop1.getShopId() );
-        user2.history(product1.getProductId(), product1.getProductName(), product1.getProductPrice(),1, shop2.getShopId() );
+        System.out.println("");
+        System.out.println("");
 
 
+
+        user1.history(product1.getProductId(), product1.getProductName(), product1.getProductPrice(), shop1.getShopId(),2 );
         user1.printHistory();
-        user2.printHistory();
 
-        shop1.replaceAmountFromStock(product3.getProductId(), 2);
+        shop1.replaceAmountFromStock(product1.getProductId(), product1.getProductName(),1, 2);
+        shop1.printProduct();
+
+        System.out.println("");
+        System.out.println("");
+
+
+        user2.history(product3.getProductId(), product3.getProductName(), product3.getProductPrice(), shop2.getShopId(),1 );
+        user2.printHistory();
+        shop2.replaceAmountFromStock(product3.getProductId(),product3.getProductName(),3,1);
+        shop2.printProduct();
+
+        System.out.println("");
+        System.out.println("");
+
+        user1.history(product4.getProductId(), product4.getProductName(), product4.getProductPrice(), shop1.getShopId(),3);
+        user1.printHistory();
+        shop1.replaceAmountFromStock(product4.getProductId(), product4.getProductName(),4, 3);
+        shop1.printProduct();
+        product4.setStock1(5);
+
+        System.out.println("");
+        System.out.println("");
+
+        user1.history(product5.getProductId(), product5.getProductName(), product5.getProductPrice(), shop1.getShopId(),3);
+        user1.printHistory();
+        shop1.replaceAmountFromStock(product4.getProductId(), product4.getProductName(),4, 3);
+        shop1.printProduct();
+
+
+        System.out.println("");
+        System.out.println("");
+
+        //shop1.addStuffToStock(product5.getProductId(), product5.getProductName(), product5.getStock1(), 2);
+
+        //shop1.printProduct();
+
+
+
+
+
+
 
     }
 }
