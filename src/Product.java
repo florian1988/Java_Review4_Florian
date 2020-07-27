@@ -42,7 +42,7 @@ public class Product {
     public void stockShop1( int stock){
         int d = stock1 + stock;
 
-        if( stock > 15 ){
+        if( d > 15 ){
             System.out.println( "stock can't get over 15!");
         } else{
             this.stock1 = d;

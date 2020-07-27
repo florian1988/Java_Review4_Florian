@@ -52,6 +52,8 @@ public class Shop {
 
              */
             System.out.println(" ");
+
+
         }
     }
 
@@ -63,39 +65,14 @@ public class Shop {
 
 
         int d =  productId - 1;
-        int f = Integer.parseInt(products.get(stock).get(2));
+        int f = stock;
+
         System.out.print("f" + f);
         int newStock = f - minusStock;
-
-
-
 
         System.out.print("d" + d);
 
         products.get(d).set(2, String.valueOf(newStock) );
-
-
-    }
-
-    public void addStuffToStock(int productId, String productName, int stock, int addStock){
-
-        int e = productId -1;
-        int newStock = stock + addStock;
-        System.out.println(stock);
-        int index = products.get(e).indexOf(String.valueOf(stock));
-
-        if(newStock > 15){
-            System.out.print("The Stock cant have more Items than 15");
-        }else{
-
-            products.get(e).set(index, String.valueOf(newStock) );
-
-            System.out.print("The new Stock for " + productName + " is " + newStock );
-        }
-
-
-
-
 
 
     }
