@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class Product {
 
@@ -16,9 +18,6 @@ public class Product {
     int stock1;
     int stock2;
 
-    Shop[] shop = new Shop[3];
-
-
     Product( String name, String Description, double price,  Category category  ){
 
         this.productId = productIdCounter++;
@@ -29,15 +28,6 @@ public class Product {
 
     }
 
-    Product(Shop shop1, Shop shop2){
-        this.shop[1] = shop1;
-        this.shop[2] = shop2;
-    }
-
-    public void show(){
-         System.out.println( productId + " " + productName + " " + productDescription + " " + productPrice + " " + category + " " + stock1  );
-    }
-
 
     public void stockShop1( int stock){
         int d = stock1 + stock;
@@ -46,54 +36,230 @@ public class Product {
             System.out.println( "stock can't get over 15!");
         } else{
             this.stock1 = d;
-            System.out.println("New Stock " + d);
+            //  System.out.println("New Stock " + d);
         }
 
     }
 
 
     public void stockShop2( int stock){
-          int d = stock2 + stock;
+        int d = stock2 + stock;
 
         if( d > 15 ){
             System.out.println( "stock can't get over 15!");
         } else{
             this.stock2 = d;
-            System.out.println("New Stock " + d);
+            // System.out.println("New Stock " + d);
         }
 
     }
 
-        ArrayList< Integer > shop1 = new ArrayList< Integer>();
-        ArrayList< Integer > shop2 = new ArrayList< Integer>();
 
 
 
-    public void addItem(int shopId, int productId, String productName,  int stock){
-            this.productId = productId;
-            this.productName = productName;
-            this.stock1 = stock;
+    public void show(){
+         System.out.println( productId + " " + productName + " " + productDescription + " " + productPrice + " " + category + " " + stock1  );
+    }
 
-            //stock(stock);
 
-            if(shopId == 1){
-                shop1.add(productId);
-                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName() + "  the sock is " + this.stock1);
-                System.out.println( "The amount of Articles in Shop one is = " + shop1.size());
-            }else if(shopId == 2){
-                shop2.add(productId);
-                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName());
-                System.out.println("The amount of Articles in Shop two is = " + shop2.size());
+    public List<List<String>> products1 = new ArrayList<List<String>>();
+    public List<List<String>> products2 = new ArrayList<List<String>>();
+    //public ArrayList<String[]> products = new ArrayList<String[]>();
 
-            } else{
-                System.out.println("");
-                System.out.println("no Shop found \n");
+
+    public void addProducts(int shopId){
+
+        ArrayList<String> singleProduct = new ArrayList<String>();
+        if(shopId == 1) {
+            if (stock1 > 15) {
+                System.out.println("Stock cant be greater then 15");
+            } else {
+                singleProduct.add(String.valueOf(productId));
+                singleProduct.add(productName);
+                singleProduct.add(String.valueOf(stock1));
+                singleProduct.add(String.valueOf(shopId));
+                products1.add(singleProduct);
             }
+        }else{
+            if (stock2 > 15) {
+                System.out.println("Stock cant be greater then 15");
+            } else {
+                singleProduct.add(String.valueOf(productId));
+                singleProduct.add(productName);
+                singleProduct.add(String.valueOf(stock2));
+                singleProduct.add(String.valueOf(shopId));
+                products2.add(singleProduct);
+            }
+        }
 
+            //products.add(new String[] {String.valueOf(productId), productName, String.valueOf(stock)});
+
+            // System.out.println(products.size());
+            //System.out.println(products.get(0)[2]);
+
+        }
+
+
+    public void printProduct(int shopId){
+
+        if(shopId == 1){
+            for( int i = 0; i < products1.size(); i++){
+
+            System.out.print( "Id: " +products1.get(i).get(0) + " name: " + products1.get(i).get(1) + " Stock: " + products1.get(i).get(2) + " ShopID: " + products1.get(i).get(3));
+            /*for(int x = 0; x < 3; x++){
+                System.out.print(products.get(i)[x]);
+            } */
+            System.out.println(" ");
+            }
+        }else{
+            for( int i = 0; i < products2.size(); i++){
+
+                System.out.print( "Id: " +products2.get(i).get(0) + " name: " + products2.get(i).get(1) + " Stock: " + products2.get(i).get(2) + " ShopID: " + products2.get(i).get(3));
+            /*for(int x = 0; x < 3; x++){
+                System.out.print(products.get(i)[x]);
+            } */
+                System.out.println(" ");
+            }
+        }
 
     }
 
 
+
+    public void replaceAmountFromStock(int shopId, int minusStock){
+
+       // System.out.print(stock1);
+        //System.out.print(shopId);
+        if(shopId == 1){
+            int d =  shopId - 1;
+
+            //int f = Integer.parseInt(products1.get(stock1).get(2));
+            //System.out.println(d);
+            //System.out.print("f" + stock1);
+            stock1 = stock1 - minusStock;
+
+
+            products1.get(d).set(2, String.valueOf(stock1) );
+
+            //setStock1(stock1);
+
+            for(List<String> i : products1){
+                System.out.println(i);
+            }
+        }else{
+
+            int d =  shopId -2;
+
+
+
+            //System.out.print("f" + d);
+            stock2 = stock2 - minusStock;
+
+            //System.out.println(stock2);
+
+            //System.out.println(d);
+
+            products2.get(d).set(2, String.valueOf(stock2) );
+
+
+            //setStock2(stock2);
+
+            for(List<String> i : products2){
+                System.out.println(i);
+            }
+        }
+
+
+
+    }
+
+    public void addAmountFromStock(int shopId, int addStock){
+
+        // System.out.print(stock1);
+        //System.out.print(shopId);
+        if(shopId == 1){
+            int d =  shopId - 1;
+
+            //int f = Integer.parseInt(products1.get(stock1).get(2));
+            //System.out.println(d);
+            //System.out.print("f" + stock1);
+            stock1 = stock1 + addStock;
+
+
+            products1.get(d).set(2, String.valueOf(stock1) );
+
+            //setStock1(stock1);
+
+            for(List<String> i : products1){
+                System.out.println(i);
+            }
+        }else{
+
+            int d =  shopId -2;
+
+
+
+            //System.out.print("f" + d);
+            stock2 = stock2 + addStock;
+
+            //System.out.println(stock2);
+
+            //System.out.println(d);
+
+            products2.get(d).set(2, String.valueOf(stock2) );
+
+
+            //setStock2(stock2);
+
+            for(List<String> i : products2){
+                System.out.println(i);
+            }
+        }
+
+
+
+    }
+/*
+    public List<List<String>> Users = new ArrayList<List<String>>();
+
+    public void addHistory(int userId, int shopId, String firstName, String lastName, int amount ){
+
+        ArrayList<String> singleHistory = new ArrayList<String>();
+
+        double price = productPrice * amount;
+
+        singleHistory.add(String.valueOf(productId));
+        singleHistory.add(String.valueOf(shopId));
+        singleHistory.add(String.valueOf(userId));
+        singleHistory.add(firstName);
+        singleHistory.add(lastName);
+        singleHistory.add(productName);
+        singleHistory.add(String.valueOf(amount));
+        singleHistory.add(String.valueOf(price));
+        Users.add(singleHistory);
+
+        User user = new User();
+        user.historyList(singleHistory);
+            replaceAmountFromStock(shopId, amount);
+    }
+
+    public void printHistory(){
+        for( int i = 0; i < products1.size(); i++) {
+            System.out.println("Product Id: " + Users.get(i).get(0));
+            System.out.println("Shop Id: " + Users.get(i).get(1));
+            System.out.println("User Id: " + Users.get(i).get(2));
+            System.out.println("First Name: " + Users.get(i).get(3));
+            System.out.println("Last Name: " + Users.get(i).get(4));
+            System.out.println("Product Name: " + Users.get(i).get(5));
+            System.out.println("Amount:" + Users.get(i).get(6));
+            System.out.println("Product Price: " + Users.get(i).get(7));
+
+        }
+
+    }
+
+
+ */
 
 
 
@@ -130,9 +296,7 @@ public class Product {
         return stock2;
     }
 
-    public Shop[] getShop() {
-        return shop;
-    }
+
 
     public void setProductId(int productId) {
         this.productId = productId;
@@ -166,7 +330,5 @@ public class Product {
         this.stock2 = stock;
     }
 
-    public void setShop(Shop[] shop) {
-        this.shop = shop;
-    }
+
 }
