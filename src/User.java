@@ -29,6 +29,11 @@ public class User{
         this.shop[0] = shop1;
         this.shop[1] = shop2;
 
+
+    }
+
+    User(){
+
     }
 
 
@@ -74,6 +79,9 @@ public class User{
         }
 
     }
+
+
+
 
 
 }

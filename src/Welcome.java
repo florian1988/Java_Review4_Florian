@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -16,23 +19,23 @@ public class Welcome {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Make a Selection:");
-        System.out.println("1) Display all products");
-        System.out.println("2) Display all products of category x");
-        System.out.println("3) Display all products where stock < 5");
-        System.out.println("4) Display all products out of stock");
+        System.out.println("1) Display all Users");
+        System.out.println("2) Display all Shops");
+        System.out.println("3) Display all Products");
         System.out.println("0) Exit");
+
 
         int menuScan = scan.nextInt();
 
         switch(menuScan){
             case 1:
-                System.out.println("you take 1");
+                showUsersOfShop();
                 break;
             case 2:
-                System.out.println("you take 2");
+                showListOfShops();
                 break;
             case 3:
-                System.out.println("you take 3");
+                showListOfProducts();
                 break;
             case 4:
                 System.out.println("you take 4");
@@ -44,38 +47,66 @@ public class Welcome {
     }
 
 
+    ArrayList<User> UsersOfShops = new ArrayList<>();
 
+    public void adToUsersOFShop(User d){
+        UsersOfShops.add(d);
 
-    /*
-        ArrayList< Integer > shop1 = new ArrayList< Integer>();
-        ArrayList< Integer > shop2 = new ArrayList< Integer>();
+    }
 
+    public void showUsersOfShop(){
+        String outputD = String.format("User: %20s,%20s,%20s,%20s,%20s,%20s,%20s,%20s", "User ID", "Firstname", "Lastname", "E-Mail", "Address", "ZIP", "Phone number", "Shop Name");
+        System.out.println(outputD);
+        for( User d : UsersOfShops){
 
-
-    public void addItem(int shopId, int productId, String productName,  int stock){
-            this.productId = productId;
-            this.productName = productName;
-            this.stock1 = stock;
-
-            //stock(stock);
-
-            if(shopId == 1){
-                shop1.add(productId);
-                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName() + "  the sock is " + this.stock1);
-                System.out.println( "The amount of Articles in Shop one is = " + shop1.size());
-            }else if(shopId == 2){
-                shop2.add(productId);
-                System.out.println("The Article " + this.productName + " with the Articlenumber " + this.productId + " get's to Shop " + shop[shopId].getName());
-                System.out.println("The amount of Articles in Shop two is = " + shop2.size());
-
-            } else{
-                System.out.println("");
-                System.out.println("no Shop found \n");
+            if(d.userId > 2){
+                String output = String.format("User: %20d,%20s,%20s,%20s,%20s,%20d,%20d,%20s", d.userId, d.firstName, d.lastName, d.eMail, d.address, d.zip, d.phone, d.shop[1].getName());
+                System.out.println(output);
+            }else{
+                String output = String.format("User: %20d,%20s,%20s,%20s,%20s,%20d,%20d,%20s", d.userId, d.firstName, d.lastName, d.eMail, d.address, d.zip, d.phone, d.shop[0].getName());
+                System.out.println(output);
             }
 
+        }
 
     }
 
 
- */
+    ArrayList <Shop> listOfShops = new ArrayList<>();
+
+        public void shopList(Shop f) {
+        listOfShops.add(f);
+
+        }
+
+        public void showListOfShops(){
+            String outputD = String.format("Shop: %30s %30s %30s","Shop Id" , "Shop Name", "Shop Address");
+            System.out.println(outputD);
+            for(Shop d : listOfShops){
+
+                String output = String.format("Shop: %30d %30s %30s", d.ShopId, d.name, d.address);
+                System.out.println(output);
+            }
+
+        }
+
+
+        ArrayList<Product> productsOfShop = new ArrayList<>();
+
+        public void productList(Product p){
+            productsOfShop.add(p);
+        }
+
+
+        public void showListOfProducts(){
+            String outputD = String.format("Shop: %30s %30s %30s %30s %30s ","Product Id" , "Product Name", "Product Description", "Price", "Category");
+            System.out.println(outputD);
+            for(Product d : productsOfShop){
+
+                String output = String.format("Shop: %30d %30s %30s %30.2f %30s", d.productId, d.productName, d.productDescription,d.productPrice, d.category);
+                System.out.println(output);
+            }
+
+        }
+
 }

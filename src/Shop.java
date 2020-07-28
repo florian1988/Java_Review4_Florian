@@ -8,6 +8,7 @@ public class Shop {
     String address;
 
 
+
     Shop( int ShopId, String name, String address ){
         this.ShopId = ShopId;
         this.name = name;
@@ -74,7 +75,6 @@ public class Shop {
         products.get(d).set(2, String.valueOf(newStock) );
 
     }
-
 
 
 
