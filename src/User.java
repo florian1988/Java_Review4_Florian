@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -16,7 +15,6 @@ public class User{
     Shop[] shop = new Shop[2];
 
 
-
     User( String firstName, String lastName, String eMail, String address, int zip, int phone, Shop shop2, Shop shop1){
 
         this.userId = userCounter++;
@@ -29,10 +27,6 @@ public class User{
         this.shop[0] = shop1;
         this.shop[1] = shop2;
 
-
-    }
-
-    User(){
 
     }
 
@@ -61,7 +55,6 @@ public class User{
         Users.add(singleHistory);
 
 
-
     }
 
     public void printHistory(){
@@ -82,6 +75,85 @@ public class User{
 
 
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public static int getUserCounter() {
+        return userCounter;
+    }
+
+    public static void setUserCounter(int userCounter) {
+        User.userCounter = userCounter;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public Shop[] getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop[] shop) {
+        this.shop = shop;
+    }
+
+    public List<List<String>> getUsers() {
+        return Users;
+    }
+
+    public void setUsers(List<List<String>> users) {
+        Users = users;
+    }
 
 
 }

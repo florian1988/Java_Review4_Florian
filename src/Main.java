@@ -1,10 +1,8 @@
 import java.util.HashMap;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-
 
         //my test Objects
 
@@ -17,12 +15,10 @@ public class Main {
         Product product4 = new Product("Jacket Developer", "funny back", 29.99, Product.Category.Jackets);
         Product product5 = new Product("Pullover Developer", "fluffy", 19.99, Product.Category.Pullovers);
 
-
         User user1 = new User("Franz", "Förster", "förster@.at", "försterStr. 20", 3445 , 65432187 ,shop1,shop2);
         User user2 = new User("Friz", "Finster", "finster@.at", "finsterStr. 20", 5478 , 13452354,shop1, shop2);
         User user3 = new User("Berta", "Birnbaum", "birnbaum@.at", "birnbaumStr. 20", 4125 , 6786789,shop1, shop2);
         User user4 = new User("Beate", "Bauer", "bauer@.at", "bauerStr. 20", 7458 , 12341234,shop1, shop2);
-
 
         //Stuff for the Menu because i was too stupid to do it better
 
@@ -47,11 +43,11 @@ public class Main {
 
         product1.stockShop1(14);
         product2.stockShop1(8);
-        product3.stockShop1(8);
+        product3.stockShop1(12);
         product4.stockShop1(8);
         product5.stockShop1(8);
 
-        product1.stockShop2(15);
+        product1.stockShop2(12);
         product2.stockShop2(14);
         product3.stockShop2(9);
         product4.stockShop2(9);
@@ -90,7 +86,6 @@ public class Main {
 
         // i made two 2d ArrayLists because of the two different shops
 
-
         product1.addProducts(shop1.ShopId);
         product1.addProducts(shop2.ShopId);
         product2.addProducts(shop1.ShopId);
@@ -102,45 +97,33 @@ public class Main {
         product5.addProducts(shop1.ShopId);
         product5.addProducts(shop2.ShopId);
 
-
         //Starting the  Menu
+        d.welcomeMenu();
+        d.welcomeMenu();
+        d.welcomeMenu();
         d.welcomeMenu();
 
 
-        product1.printProduct(shop1.ShopId);
-
-        product2.printProduct(shop2.ShopId);
-
-/*
-
-
-        product1.replaceAmountFromStock(shop1.ShopId, 2);
-
-        product1.replaceAmountFromStock(shop1.ShopId, 2);
-
-        product1.replaceAmountFromStock(shop1.ShopId, 2);
-
-
-        product2.replaceAmountFromStock(shop2.ShopId, 3);
-
-        product2.replaceAmountFromStock(shop2.ShopId, 3);
-        product2.replaceAmountFromStock(shop2.ShopId, 3);
-        product2.addAmountFromStock(shop2.ShopId, 5);
-        product2.addAmountFromStock(shop2.ShopId,20);
-        product2.addAmountFromStock(shop1.ShopId,20);
-
-        product2.replaceAmountFromStock(shop2.ShopId, 6);
-
-
-
-        user1.addHistory(product1.productId,product1.productPrice,product1.productName, 2 );
-        user1.addHistory(product1.productId,product1.productPrice,product1.productName, 2 );
-        user3.addHistory(product1.productId,product1.productPrice,product1.productName, 2 );
-        user3.addHistory(product1.productId,product1.productPrice,product1.productName, 2 );
-        user1.printHistory();
+        // stock from product1 in the shop 1
+        product1.printProduct(shop2.ShopId);
+        // stock from product1 reduzed to 9
+        product1.replaceAmountFromStock(shop2.ShopId, 5);
+        product1.replaceAmountFromStock(shop2.ShopId, 5);
+        // add to purchase history
+        user3.addHistory(product1.productId,product1.productPrice, product1.productName, 5);
+        user3.addHistory(product1.productId,product1.productPrice, product1.productName, 5);
+        //print purchase history
         user3.printHistory();
+        // add products to sock
+        product1.addAmountFromStock(shop2.ShopId,6);
 
- */
+
+
+        d.printUserTxt(user3);
+
+
+
+
 
 
     }

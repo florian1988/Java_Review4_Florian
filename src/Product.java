@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 public class Product {
@@ -29,45 +27,34 @@ public class Product {
 
     }
 
-    Product(){
-
-    }
-
-
     public void stockShop1(int stock) {
         int d = stock1 + stock;
-
+        int e = d - 15;
         if (d > 15) {
-            System.out.println("stock can't get over 15!");
+            System.out.println("stock can't get over 15 put "+ e +" away!");
         } else {
             this.stock1 = d;
-            //  System.out.println("New Stock " + d);
+              System.out.println("New Stock " + d);
         }
 
     }
-
 
     public void stockShop2(int stock) {
         int d = stock2 + stock;
-
+        int e = d - 15;
         if (d > 15) {
-            System.out.println("stock can't get over 15!");
+            System.out.println("stock can't get over 15 put "+ e +" away!");
         } else {
             this.stock2 = d;
-            // System.out.println("New Stock " + d);
+             System.out.println("New Stock " + d);
         }
 
     }
 
-
-    public void show() {
-        System.out.println(productId + " " + productName + " " + productDescription + " " + productPrice + " " + category + " " + stock1);
-    }
-
-
+    //Shop1
     public List<List<String>> products1 = new ArrayList<List<String>>();
+    //Shop2
     public List<List<String>> products2 = new ArrayList<List<String>>();
-    //public ArrayList<String[]> products = new ArrayList<String[]>();
 
 
     public void addProducts(int shopId) {
@@ -95,11 +82,6 @@ public class Product {
             }
         }
 
-        //products.add(new String[] {String.valueOf(productId), productName, String.valueOf(stock)});
-
-        // System.out.println(products.size());
-        //System.out.println(products.get(0)[2]);
-
     }
 
 
@@ -108,7 +90,7 @@ public class Product {
         if (shopId == 1) {
             for (int i = 0; i < products1.size(); i++) {
 
-                System.out.print("Id: " + products1.get(i).get(0) + " name: " + products1.get(i).get(1) + " Stock: " + products1.get(i).get(2) + " ShopID: " + products1.get(i).get(3));
+                System.out.print("Product Id: " + products1.get(i).get(0) + "  Productname: " + products1.get(i).get(1) + "  Stock: " + products1.get(i).get(2) + " ShopID: " + products1.get(i).get(3));
             /*for(int x = 0; x < 3; x++){
                 System.out.print(products.get(i)[x]);
             } */
@@ -117,7 +99,7 @@ public class Product {
         } else {
             for (int i = 0; i < products2.size(); i++) {
 
-                System.out.print("Id: " + products2.get(i).get(0) + " name: " + products2.get(i).get(1) + " Stock: " + products2.get(i).get(2) + " ShopID: " + products2.get(i).get(3));
+                System.out.print("Product Id: " + products2.get(i).get(0) + " Productname: " + products2.get(i).get(1) + " Stock: " + products2.get(i).get(2) + " ShopID: " + products2.get(i).get(3));
             /*for(int x = 0; x < 3; x++){
                 System.out.print(products.get(i)[x]);
             } */
@@ -127,6 +109,7 @@ public class Product {
 
     }
 
+    //method to buy products
 
     public void replaceAmountFromStock(int shopId, int minusStock) {
 
@@ -182,6 +165,7 @@ public class Product {
 
     }
 
+    // for the employee to add products to the Stock
 
     public void addAmountFromStock(int shopId, int addStock) {
 
@@ -196,8 +180,9 @@ public class Product {
                 //System.out.print("f" + stock1);
                 stock1 = stock1 + addStock;
                 if(stock1 > 15){
-                    String i = String.valueOf(stock1);
-                    throw new StockLimitReachedException("Too much Products!! " + i + "   There are space for 15 pices!!!");
+                    int q = stock1 -15;
+                    String i = String.valueOf(q);
+                    throw new StockLimitReachedException("Too much Products!! Reduce it about " + i + " Pieces.   There are space for 15 Products!!!");
                 }
 
 
@@ -219,8 +204,9 @@ public class Product {
                 stock2 = stock2 + addStock;
 
                 if(stock2 > 15){
-                    String i = String.valueOf(stock2);
-                    throw new StockLimitReachedException("Too much Products!! " + i + "   There are space for 15 pices!!!");
+                    int q = stock2 -15;
+                    String i = String.valueOf(q);
+                    throw new StockLimitReachedException("Too much Products!! Reduze it about " + i + " Pieces.   There are space for 15 Products!!!");
                 }
                 //System.out.println(stock2);
 
@@ -241,49 +227,6 @@ public class Product {
             System.out.println(e.getMessage());
         }
     }
-/*
-    public List<List<String>> Users = new ArrayList<List<String>>();
-
-    public void addHistory(int userId, int shopId, String firstName, String lastName, int amount ){
-
-        ArrayList<String> singleHistory = new ArrayList<String>();
-
-        double price = productPrice * amount;
-
-        singleHistory.add(String.valueOf(productId));
-        singleHistory.add(String.valueOf(shopId));
-        singleHistory.add(String.valueOf(userId));
-        singleHistory.add(firstName);
-        singleHistory.add(lastName);
-        singleHistory.add(productName);
-        singleHistory.add(String.valueOf(amount));
-        singleHistory.add(String.valueOf(price));
-        Users.add(singleHistory);
-
-        User user = new User();
-        user.historyList(singleHistory);
-            replaceAmountFromStock(shopId, amount);
-    }
-
-    public void printHistory(){
-        for( int i = 0; i < products1.size(); i++) {
-            System.out.println("Product Id: " + Users.get(i).get(0));
-            System.out.println("Shop Id: " + Users.get(i).get(1));
-            System.out.println("User Id: " + Users.get(i).get(2));
-            System.out.println("First Name: " + Users.get(i).get(3));
-            System.out.println("Last Name: " + Users.get(i).get(4));
-            System.out.println("Product Name: " + Users.get(i).get(5));
-            System.out.println("Amount:" + Users.get(i).get(6));
-            System.out.println("Product Price: " + Users.get(i).get(7));
-
-        }
-
-    }
-
-
- */
-
-
 
 
 
