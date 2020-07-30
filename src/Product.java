@@ -123,7 +123,6 @@ public class Product {
             //System.out.print("f" + stock1);
             stock1 = stock1 - minusStock;
 
-
             products1.get(d).set(2, String.valueOf(stock1));
 
             //setStock1(stock1);
@@ -161,8 +160,6 @@ public class Product {
                 System.out.println(i);
             }
         }
-
-
     }
 
     // for the employee to add products to the Stock
